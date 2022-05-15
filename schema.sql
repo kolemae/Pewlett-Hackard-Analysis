@@ -186,3 +186,30 @@ INNER JOIN dept_emp AS de
     ON (ce.emp_no = de.emp_no)
 INNER JOIN departments AS d
     ON (de.dept_no = d.dept_no);
+	
+-- 7.3.6 Skill Drills
+SELECT ri.emp_no,
+ri.first_name,
+ri.last_name,
+d.dept_name
+INTO sales_team
+FROM retirement_info as ri
+INNER JOIN dept_emp AS de
+    ON (ri.emp_no = de.emp_no)
+INNER JOIN departments AS d
+    ON (de.dept_no = d.dept_no)
+WHERE (d.dept_name = 'Sales');
+
+SELECT ri.emp_no,
+ri.first_name,
+ri.last_name,
+d.dept_name
+INTO sales_dev
+FROM retirement_info as ri
+INNER JOIN dept_emp AS de
+    ON (ri.emp_no = de.emp_no)
+INNER JOIN departments AS d
+    ON (de.dept_no = d.dept_no)
+WHERE d.dept_name IN ('Sales', 'Development');
+
+SELECT * FROM sales_dev;
